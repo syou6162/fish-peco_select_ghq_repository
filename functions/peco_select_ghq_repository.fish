@@ -5,11 +5,10 @@ function peco_select_ghq_repository
     set peco_flags --query "$query"
   end
 
-  ghq list | peco $peco_flags | read line
+  ghq list -p | peco $peco_flags | read line
 
   if [ $line ]
-    ghq root | read dir
-    cd $dir/$line
+    cd $line
     commandline -f repaint
   end
 end
